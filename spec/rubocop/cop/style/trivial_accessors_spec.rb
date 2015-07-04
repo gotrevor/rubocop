@@ -179,6 +179,19 @@ describe RuboCop::Cop::Style::TrivialAccessors, :config do
     end
   end
 
+  context 'disallow predicates' do
+    let(:cop_config) { { 'AllowPredicates' => false } }
+
+    it 'does not accept predicate-like reader' do
+      inspect_source(cop,
+                     ['def foo?',
+                      '  @foo',
+                      'end'])
+      binding.pry
+      expect(cop.offenses).to eq(["what goes here?"])
+    end
+  end
+
   context 'allow predicates' do
     let(:cop_config) { { 'AllowPredicates' => true } }
 

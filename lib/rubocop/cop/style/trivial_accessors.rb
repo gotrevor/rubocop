@@ -1,5 +1,5 @@
 # encoding: utf-8
-
+require 'pry'
 module RuboCop
   module Cop
     module Style
@@ -100,7 +100,7 @@ module RuboCop
         def names_match?(method_name, body)
           ivar_name, = *body
 
-          method_name.to_s.chomp('=') == ivar_name[1..-1]
+          method_name.to_s.sub(/[=?]$/,'') == ivar_name[1..-1]
         end
 
         def trivial_accessor_kind(method_name, args, body)
