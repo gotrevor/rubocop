@@ -187,7 +187,7 @@ describe RuboCop::Cop::Style::TrivialAccessors, :config do
                      ['def foo?',
                       '  @foo',
                       'end'])
-      expect(cop.offenses).to eq(["what goes here?"])
+      expect(cop.offenses.size).to eq(1)
     end
   end
 
@@ -276,8 +276,21 @@ describe RuboCop::Cop::Style::TrivialAccessors, :config do
       end
 
       it 'does not autocorrect' do
-        expect(autocorrect_source(cop, source))
-          .to eq(source.join("\n"))
+        expect(autocorrect_source(cop, source)).to eq(source.join("\n"))
+        expect(cop.offenses.map(&:corrected?)).to eq [false]
+      end
+    end
+
+    context 'predicate reader, with AllowsPredicate: false' do
+      let(:cop_config) { { 'PredicateReader' => false } }
+      let(:source) do
+        ['def foo?',
+         '  @foo',
+         'end']
+      end
+
+      it 'does not autocorrect' do
+        expect(autocorrect_source(cop, source)).to eq(source.join("\n"))
         expect(cop.offenses.map(&:corrected?)).to eq [false]
       end
     end

@@ -14,6 +14,10 @@ class Bar
     @foo
   end
 
+  def foo0?
+    @foo999
+  end
+
   def car2
     @car3
   end
