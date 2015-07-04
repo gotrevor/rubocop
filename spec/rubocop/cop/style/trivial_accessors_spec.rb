@@ -187,7 +187,6 @@ describe RuboCop::Cop::Style::TrivialAccessors, :config do
                      ['def foo?',
                       '  @foo',
                       'end'])
-      binding.pry
       expect(cop.offenses).to eq(["what goes here?"])
     end
   end
