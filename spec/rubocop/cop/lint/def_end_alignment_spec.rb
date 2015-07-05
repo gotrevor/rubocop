@@ -102,5 +102,29 @@ describe RuboCop::Cop::Lint::DefEndAlignment, :config do
         end
       end
     end
+
+    context 'attempt to reproduce crash', tjm: true do
+      let(:cop_config) do
+        { 'AlignWith' => 'start_of_line', 'AutoCorrect' => true }
+      end
+      let(:source) do
+        ['def func',
+         '  foo',
+         'rescue',
+         '  baz',
+         '  end',
+         '']
+      end
+
+      it 'works in rspec, not from CLI' do
+        corrected = autocorrect_source(cop, source, 'foo_bar.rb')
+        expect(corrected).to eq( ['def func',
+                                  '  foo',
+                                  'rescue',
+                                  '  baz',
+                                  'end',
+                                  ''].join("\n"))
+      end
+    end
   end
 end
