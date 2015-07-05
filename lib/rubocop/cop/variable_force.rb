@@ -59,16 +59,7 @@ module RuboCop
         if root_node.begin_type?
           root_node
         else
-          root_copy = root_node.clone
-          puts "root_node: #{root_node.object_id}"
-          puts "root_copy: #{root_copy.object_id}"
-          puts "root_node.parent:.parent #{root_node.parent.object_id}"
-          puts "root_copy.parent: #{root_copy.parent.object_id}"
-          Astrolabe::Node.new(:begin, [root_copy])
-          puts "root_node: #{root_node.object_id}"
-          puts "root_clon: #{root_copy.object_id}"
-          puts "root_node.parent: #{root_node.parent.object_id}"
-          puts "root_clon.parent: #{root_copy.parent.object_id}"
+          Astrolabe::Node.new(:begin, [root_node])
         end
       end
 

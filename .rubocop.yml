@@ -9,3 +9,6 @@ AllCops:
 
 Style/Encoding:
   Enabled: true
+
+Lint/DefEndAlignment:
+  AutoCorrect: true
