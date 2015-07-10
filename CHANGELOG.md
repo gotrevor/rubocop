@@ -9,13 +9,21 @@
 * [#1980](https://github.com/bbatsov/rubocop/pull/1980): `--auto-gen-config` now outputs an excluded files list for failed cops (up to a maxiumum of 15 files). ([@bmorrall][])
 * [#1918](https://github.com/bbatsov/rubocop/issues/1918): New configuration parameter `AllCops:DisabledByDefault` when set to `true` makes only cops found in user configuration enabled, which makes cop selection *opt-in*. ([@jonas054][])
 * New cop `Performance/StringReplacement` checks for usages of `gsub` that can be replaced with `tr` or `delete`. ([@rrosenblum][])
+* [#2001](https://github.com/bbatsov/rubocop/issues/2001): New cop `Style/InitialIndentation` checks for indentation of the first non-blank non-comment line in a file. ([@jonas054][])
+* New cop `Lint/UselessOptionalArgument` checks for optional arguments that do not appear at the end of an argument list. ([@rrosenblum][])
+
+### Changes
+
+* [#2008](https://github.com/bbatsov/rubocop/issues/2008): `Style/SpaceBeforeModifierKeyword` now also checks for *too many* spaces before a modifier keyword. ([@jonas054][])
 
 ### Bugs fixed
 
+* [#2014](https://github.com/bbatsov/rubocop/pull/2014): Fix `Style/TrivialAccessors` to support AllowPredicates: false. ([@gotrevor][])
 * [#1988](https://github.com/bbatsov/rubocop/issues/1988): Fix bug in `Style/ParallelAssignment` when assigning from `Module::CONSTANT`. ([@rrosenblum][])
 * [#1995](https://github.com/bbatsov/rubocop/pull/1995): Improve message for `Rails/TimeZone`. ([@palkan][])
 * [#1977](https://github.com/bbatsov/rubocop/issues/1977): Fix bugs in `Rails/Date` and `Rails/TimeZone` when using namespaced Time/Date. ([@palkan][])
 * [#1973](https://github.com/bbatsov/rubocop/issues/1973): Do not register an offense in `Performance/Detect` when `select` is called on `Enumerable::Lazy`. ([@palkan][])
+* [#2015](https://github.com/bbatsov/rubocop/issues/2015): Fix bug occurring for auto-correction of a misaligned `end` in a file with only one method. ([@jonas054][])
 
 ## 0.32.1 (24/06/2015)
 
